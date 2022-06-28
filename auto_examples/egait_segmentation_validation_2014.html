@@ -1,0 +1,872 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>EgaitSegmentationValidation2014 - A Stride Segmentation validation dataset &#8212; mad-datasets 0.3.0 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EgaitParameterValidation2013 - A Stride Parameter validation dataset" href="egait_parameter_validation_2013.html" />
+    <link rel="prev" title="Examples" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="None">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">mad-datasets 0.3.0 documentation</p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../README.html">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../guides/index.html">
+  User Guides
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../modules/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="reference internal nav-link" href="index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="../CHANGELOG.html">
+  Changelog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/mad-lab-fau/mad-datasets" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   EgaitSegmentationValidation2014 - A Stride Segmentation validation dataset
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="egait_parameter_validation_2013.html">
+   EgaitParameterValidation2013 - A Stride Parameter validation dataset
+  </a>
+ </li>
+</ul>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="stair_ambulation_healthy_2021.html">
+   StairAmbulationHealthy2021 - A Stride Segmentation and Event Detection dataset with focus on stairs
+  </a>
+ </li>
+</ul>
+
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#free-walk">
+   Free-walk
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x10-m-walk">
+   4x10 m walk
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-auto-examples-egait-segmentation-validation-2014-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="egaitsegmentationvalidation2014-a-stride-segmentation-validation-dataset">
+<span id="sphx-glr-auto-examples-egait-segmentation-validation-2014-py"></span><h1>EgaitSegmentationValidation2014 - A Stride Segmentation validation dataset<a class="headerlink" href="#egaitsegmentationvalidation2014-a-stride-segmentation-validation-dataset" title="Permalink to this headline">#</a></h1>
+<p>The EgaitSegmentationValidation2014 dataset allows access to the stride segmentation validation dataset recorded for
+the EGait system.
+It contains multiple 4x10 m walks and simulated “free-living” walks recorded by two foot worn IMU sensors.
+The indivudal strides were labeled manually by multiple gait experts.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For this example to work, you need to modify the dataset path in the following line to point to the
+location of the data on your machine.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="kn">from</span> <span class="nn">mad_datasets</span> <span class="kn">import</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class"><span class="n">EgaitSegmentationValidation2014</span></a>
+
+<a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset_path</span></a> <span class="o">=</span> <a href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="pathlib.Path" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class"><span class="n">Path</span></a><span class="p">(</span><span class="s2">&quot;/home/arne/Documents/repos/work/datasets/eGaIT_database_segmentation/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>First we will create a simple instance of the dataset class.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class"><span class="n">EgaitSegmentationValidation2014</span></a><span class="p">(</span><span class="n">data_folder</span><span class="o">=</span><a href="https://docs.python.org/3/library/pathlib.html#pathlib.PosixPath" title="pathlib.PosixPath" class="sphx-glr-backref-module-pathlib sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset_path</span></a><span class="p">)</span>
+<a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">dataset</span></a>
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<h4 style="margin-bottom: 0.1em;">EgaitSegmentationValidation2014 [45 groups/rows]</h3>
+<div style="margin-top: 0em">
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table style="margin-left: 3em;">
+  <thead>
+    <tr style="text-align: right;">
+      <th style="text-align: center;"></th>
+      <th style="text-align: center;">cohort</th>
+      <th style="text-align: center;">test</th>
+      <th style="text-align: center;">participant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th style="text-align: center;">0</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P55E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">1</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA114065</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">2</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413046E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">3</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT5WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">4</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413056E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">5</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT4WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">6</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P58E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">7</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA313073E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">8</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214026</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">9</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA213010E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">10</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413051E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">11</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P52E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">12</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA114059</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">13</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413053E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">14</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P59E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">15</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P51E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">16</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413055E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">17</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA313011E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">18</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413011E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">19</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413049E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">20</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413054E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">21</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P53E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">22</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT1WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">23</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA313009E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">24</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA112030E3</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">25</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P57E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">26</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413052E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">27</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA313039E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">28</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214020</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">29</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT8WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">30</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413048E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">31</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413013E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">32</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GASTD46SAB</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">33</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P50E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">34</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P56E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">35</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA313041E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">36</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">P54E6</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">37</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214033</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">38</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT7WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">39</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413003E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">40</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA114063</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">41</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214021</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">42</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214030</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">43</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA413002E5</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">44</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GASTD45JW</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<br />
+<br /><p>Based on the index you can select either a specific cohort or test, or a specific participant.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">only_free_walk</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.get_subset" title="mad_datasets.EgaitSegmentationValidation2014.get_subset" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-method"><span class="n">dataset</span><span class="o">.</span><span class="n">get_subset</span></a><span class="p">(</span><span class="n">test</span><span class="o">=</span><span class="s2">&quot;free_walk&quot;</span><span class="p">)</span>
+<a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">only_free_walk</span></a>
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<h4 style="margin-bottom: 0.1em;">EgaitSegmentationValidation2014 [15 groups/rows]</h3>
+<div style="margin-top: 0em">
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table style="margin-left: 3em;">
+  <thead>
+    <tr style="text-align: right;">
+      <th style="text-align: center;"></th>
+      <th style="text-align: center;">cohort</th>
+      <th style="text-align: center;">test</th>
+      <th style="text-align: center;">participant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th style="text-align: center;">0</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA114065</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">1</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT5WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">2</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT4WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">3</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214026</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">4</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA114059</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">5</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT1WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">6</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214020</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">7</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT8WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">8</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GASTD46SAB</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">9</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214033</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">10</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">geriatric</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">PAT7WALD</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">11</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA114063</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">12</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">pd</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214021</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">13</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214030</td>
+    </tr>
+    <tr>
+      <th style="text-align: center;">14</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GASTD45JW</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<br />
+<br /><p>We will investigate the data for a single participant in the following for both types of tests</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">free_walk</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.get_subset" title="mad_datasets.EgaitSegmentationValidation2014.get_subset" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-method"><span class="n">only_free_walk</span><span class="o">.</span><span class="n">get_subset</span></a><span class="p">(</span><span class="n">participant</span><span class="o">=</span><span class="s2">&quot;GA214030&quot;</span><span class="p">)</span>
+<a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">free_walk</span></a>
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<h4 style="margin-bottom: 0.1em;">EgaitSegmentationValidation2014 [1 groups/rows]</h3>
+<div style="margin-top: 0em">
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table style="margin-left: 3em;">
+  <thead>
+    <tr style="text-align: right;">
+      <th style="text-align: center;"></th>
+      <th style="text-align: center;">cohort</th>
+      <th style="text-align: center;">test</th>
+      <th style="text-align: center;">participant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th style="text-align: center;">0</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">free_walk</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA214030</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<br />
+<br /><section id="free-walk">
+<h2>Free-walk<a class="headerlink" href="#free-walk" title="Permalink to this headline">#</a></h2>
+<p>We will plot the data together with the manually labeled strides.
+We can see that multiple strides were labeled over the 4-min period of the measurement.
+The only exception is a small signal region in the center</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">imu_data</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.data" title="mad_datasets.EgaitSegmentationValidation2014.data" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-property"><span class="n">free_walk</span><span class="o">.</span><span class="n">data</span></a>
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segmented_stride_list</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.segmented_stride_list_" title="mad_datasets.EgaitSegmentationValidation2014.segmented_stride_list_" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-property"><span class="n">free_walk</span><span class="o">.</span><span class="n">segmented_stride_list_</span></a>
+
+
+<span class="k">def</span> <span class="nf">plot_strides</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">imu_data</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segmented_stride_list</span></a><span class="p">):</span>
+    <a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">foot</span> <span class="o">=</span> <span class="s2">&quot;right_sensor&quot;</span>
+    <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">imu_data</span></a><span class="p">[</span><span class="n">foot</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">like</span><span class="o">=</span><span class="s2">&quot;acc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">imu_data</span></a><span class="p">[</span><span class="n">foot</span><span class="p">]</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">like</span><span class="o">=</span><span class="s2">&quot;gyr&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="ow">in</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segmented_stride_list</span></a><span class="p">[</span><span class="n">foot</span><span class="p">]</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">s</span> <span class="o">/=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.sampling_rate_hz" title="mad_datasets.EgaitSegmentationValidation2014.sampling_rate_hz" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-property"><span class="n">free_walk</span><span class="o">.</span><span class="n">sampling_rate_hz</span></a>
+        <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;start&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;end&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a>
+
+
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a> <span class="o">=</span> <span class="n">plot_strides</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">imu_data</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segmented_stride_list</span></a><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.show" title="matplotlib.figure.Figure.show" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_egait_segmentation_validation_2014_001.png" srcset="../_images/sphx_glr_egait_segmentation_validation_2014_001.png" alt="egait segmentation validation 2014" class = "sphx-glr-single-img"/><p>If we zoom into this region, we can see that the signal looks “gait-like”.
+However, this corresponds to stair walking, which was explicitly <strong>not</strong> labeled as a stride by the authors of the
+dataset, as they wanted to show that the algorithms they developed could differentiate between stair walking and
+level walking.
+Further, all turning strides were <strong>not</strong> labeled as a stride in the dataset.</p>
+<p>This is important to keep in mind, when evaluating the performance of the algorithms on this dataset!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a> <span class="o">=</span> <span class="n">plot_strides</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">imu_data</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segmented_stride_list</span></a><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.axes" title="matplotlib.figure.Figure.axes" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-property"><span class="n">fig</span><span class="o">.</span><span class="n">axes</span></a><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">145</span><span class="p">,</span> <span class="mi">165</span><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.show" title="matplotlib.figure.Figure.show" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_egait_segmentation_validation_2014_002.png" srcset="../_images/sphx_glr_egait_segmentation_validation_2014_002.png" alt="egait segmentation validation 2014" class = "sphx-glr-single-img"/></section>
+<section id="x10-m-walk">
+<h2>4x10 m walk<a class="headerlink" href="#x10-m-walk" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">only_gait_test</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.get_subset" title="mad_datasets.EgaitSegmentationValidation2014.get_subset" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-method"><span class="n">dataset</span><span class="o">.</span><span class="n">get_subset</span></a><span class="p">(</span><span class="n">test</span><span class="o">=</span><span class="s2">&quot;4x10m&quot;</span><span class="p">)</span>
+<a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">gait_test</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.get_subset" title="mad_datasets.EgaitSegmentationValidation2014.get_subset" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-method"><span class="n">only_gait_test</span><span class="o">.</span><span class="n">get_subset</span></a><span class="p">(</span><span class="n">participant</span><span class="o">=</span><span class="s2">&quot;GA112030E3&quot;</span><span class="p">)</span>
+<a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014" title="mad_datasets.EgaitSegmentationValidation2014" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">gait_test</span></a>
+</pre></div>
+</div>
+<div class="output_subarea output_html rendered_html output_result">
+<h4 style="margin-bottom: 0.1em;">EgaitSegmentationValidation2014 [1 groups/rows]</h3>
+<div style="margin-top: 0em">
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table style="margin-left: 3em;">
+  <thead>
+    <tr style="text-align: right;">
+      <th style="text-align: center;"></th>
+      <th style="text-align: center;">cohort</th>
+      <th style="text-align: center;">test</th>
+      <th style="text-align: center;">participant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th style="text-align: center;">0</th>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">control</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">4x10m</td>
+      <td style="text-align: center; padding-left: 2em; padding-right: 2em;">GA112030E3</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<br />
+<br /><p>We will plot the data together with the manually labeled strides.
+We can clearly see the 4 straight walks during the test.
+In between the walks we can see turning strides.
+Again, these were explicitly <strong>not</strong> labeled as strides by the authors of the dataset.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">imu_data</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.data" title="mad_datasets.EgaitSegmentationValidation2014.data" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-property"><span class="n">gait_test</span><span class="o">.</span><span class="n">data</span></a>
+<a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segmented_stride_list</span></a> <span class="o">=</span> <a href="../modules/generated/mad_datasets.EgaitSegmentationValidation2014.html#mad_datasets.EgaitSegmentationValidation2014.segmented_stride_list_" title="mad_datasets.EgaitSegmentationValidation2014.segmented_stride_list_" class="sphx-glr-backref-module-mad_datasets sphx-glr-backref-type-py-property"><span class="n">gait_test</span><span class="o">.</span><span class="n">segmented_stride_list_</span></a>
+
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a> <span class="o">=</span> <span class="n">plot_strides</span><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">imu_data</span></a><span class="p">,</span> <a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">segmented_stride_list</span></a><span class="p">)</span>
+<a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure.show" title="matplotlib.figure.Figure.show" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-method"><span class="n">fig</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_egait_segmentation_validation_2014_003.png" srcset="../_images/sphx_glr_egait_segmentation_validation_2014_003.png" alt="egait segmentation validation 2014" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  5.519 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  69 MB</p>
+<div class="sphx-glr-footer class sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-egait-segmentation-validation-2014-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/f83a15ad56bc60bea5fb92297a50da8f/egait_segmentation_validation_2014.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">egait_segmentation_validation_2014.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/08076a719d53c1b8f657ae32a3742efb/egait_segmentation_validation_2014.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">egait_segmentation_validation_2014.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022 - 2022, MaD Lab, FAU.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>

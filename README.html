@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>mad-datasets &#8212; mad-datasets 0.3.0 documentation</title>
+<script>
+  document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+  document.documentElement.dataset.theme = localStorage.getItem("theme") || "light"
+</script>
+
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=92025949c220c2e29695" rel="stylesheet">
+
+
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
+
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="User Guides" href="guides/index.html" />
+    <link rel="prev" title="mad-datasets Docu Overview" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="docsearch:language" content="None">
+  </head>
+  
+  
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="180" data-default-mode="">
+    <div class="bd-header-announcement container-fluid" id="banner">
+      
+
+    </div>
+
+    
+    <nav class="bd-header navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><div class="bd-header__inner container-xl">
+
+  <div id="navbar-start">
+    
+    
+  
+
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">mad-datasets 0.3.0 documentation</p>
+  
+</a>
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-bars"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Getting Started
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="guides/index.html">
+  User Guides
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="modules/index.html">
+  API Reference
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="auto_examples/index.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="CHANGELOG.html">
+  Changelog
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <span id="theme-switch" class="btn btn-sm btn-outline-primary navbar-btn rounded-circle">
+    <a class="theme-switch" data-mode="light"><i class="fas fa-sun"></i></a>
+    <a class="theme-switch" data-mode="dark"><i class="far fa-moon"></i></a>
+    <a class="theme-switch" data-mode="auto"><i class="fas fa-adjust"></i></a>
+</span>
+      </div>
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/mad-lab-fau/mad-datasets" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+
+    <div class="bd-container container-xl">
+      <div class="bd-container__inner row">
+          
+
+<!-- Only show if we have sidebars configured, else just a small margin  -->
+<div class="bd-sidebar-primary col-12 col-md-3 bd-sidebar">
+  <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+  </div>
+  <div class="sidebar-end-items">
+  </div>
+</div>
+
+
+          
+
+
+<div class="bd-sidebar-secondary d-none d-xl-block col-xl-2 bd-toc">
+  
+    
+    <div class="toc-item">
+      
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#datasets">
+   Datasets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#testing">
+   Testing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#documentation-build-instructions">
+   Documentation (build instructions)
+  </a>
+ </li>
+</ul>
+
+</nav>
+    </div>
+    
+    <div class="toc-item">
+      
+    </div>
+    
+  
+</div>
+
+
+          
+          
+          <div class="bd-content col-12 col-md-9 col-xl-7">
+              
+              <article class="bd-article" role="main">
+                
+  <p><a class="reference external" href="https://pypi.org/project/mad-datasets/"><img alt="PyPI" src="https://img.shields.io/pypi/v/mad-datasets" /></a>
+<a class="reference external" href="https://mad-lab-fau.github.io/mad-datasets"><img alt="Documentation status" src="https://img.shields.io/badge/docs-online-green" /></a>
+<a class="reference external" href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg" /></a>
+<img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/mad-datasets" /></p>
+<section id="mad-datasets">
+<h1>mad-datasets<a class="headerlink" href="#mad-datasets" title="Permalink to this headline">#</a></h1>
+<p>Helper to access to open-source gait datasets of the MaD-Lab (and maybe externals in the future).</p>
+<p>The aim of this package is to ensure that all datasets can be loaded in a similar fashion and all data (and annotations)
+are in the same format (i.e. the same sensor orientations, units, etc.).
+This should allow to easily run the same algorithm across multiple datasets.</p>
+<blockquote>
+<div><p>:warning: While this makes it easier to work with the datasets, the coordinate system and other data information
+provided with the dataset might not match the format you get when using this library!</p>
+</div></blockquote>
+<p>All datasets APIs are built using the
+<a class="reference external" href="https://tpcp.readthedocs.io/en/latest/modules/generated/dataset/tpcp.Dataset.html#tpcp.Dataset"><code class="docutils literal notranslate"><span class="pre">tpcp.Dataset</span></code></a>
+interface.
+For available datasets see the table below.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">#</a></h2>
+<p>Install the package from Pip</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mad</span><span class="o">-</span><span class="n">datasets</span>
+</pre></div>
+</div>
+<p>Then download/obtain the dataset that you are planning to use (see below).
+The best way to get started is to then check the example for the respective dataset on the
+<a class="reference external" href="https://mad-lab-fau.github.io/mad-datasets/auto_examples/index.html">documentation page</a>.</p>
+</section>
+<section id="datasets">
+<h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">#</a></h2>
+<p>| Dataset                         | Info Link                                                       | Download                            |
+|———————————|—————————————————————–|————————————-|
+| EgaitSegmentationValidation2014 | https://www.mad.tf.fau.de/research/activitynet/digital-biobank/ | Email to data owner (see info link) |
+| EgaitParameterValidation2013    | https://www.mad.tf.fau.de/research/activitynet/digital-biobank/ | Email to data owner (see info link) |
+| StairAmbulationHealthy2021      | https://osf.io/sgbw7/                                           |  https://osf.io/download/5ueq6/     |</p>
+<p>Note: The <code class="docutils literal notranslate"><span class="pre">sensor_position_comparison</span></code> dataset recorded in 2019 is not part of the mad-datasets package, but can be
+obtained in a similar format using the
+<a class="reference external" href="https://github.com/mad-lab-fau/sensor_position_dataset_helper"><code class="docutils literal notranslate"><span class="pre">sensor_position_dataset_helper</span></code></a> python package.</p>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">/tests</span></code> directory contains a set of tests to check the functionality of the library.
+However, most tests rely on the existence of the respective datasets in certain folders outside the library.
+Therefore, the tests can only be run locally and not on the CI server.</p>
+<p>To run them locally, make sure datasets are downloaded into the correct folders and then run <code class="docutils literal notranslate"><span class="pre">poe</span> <span class="pre">test</span></code>.</p>
+</section>
+<section id="documentation-build-instructions">
+<h2>Documentation (build instructions)<a class="headerlink" href="#documentation-build-instructions" title="Permalink to this headline">#</a></h2>
+<p>Like the tests, the documentation requires the datasets to be downloaded into the correct folders to execute the
+examples.
+Therefore, we can not build the docs automatically on RTD.
+Instead we host the docs via github pages.
+The HTML source can be found in the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch of this repo.</p>
+<p>To make the deplowment as easy as possible, we “mounted” the <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch as a submodule in the <code class="docutils literal notranslate"><span class="pre">docs/_build/html</span></code>
+folder.
+Hence, before you attempt to build the docs, you need to initialize the submodule.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span> <span class="o">--</span><span class="n">recursive</span>
+</pre></div>
+</div>
+<p>After that you can run <code class="docutils literal notranslate"><span class="pre">poe</span> <span class="pre">docs</span></code> to build the docs and then <code class="docutils literal notranslate"><span class="pre">poe</span> <span class="pre">upload_docs</span></code> to push the changes to the gh-pages
+branch.
+We will always just update a single commit on the gh-pages branch to keep the effective file size small.</p>
+<p>**WARNING: ** Don’t delete the <code class="docutils literal notranslate"><span class="pre">docs/_build</span></code> folder manually or by running the sphinx make file!
+This will delete the submodule and might cause issues.
+The <code class="docutils literal notranslate"><span class="pre">poe</span></code> task is configured to clean all relevant files in the <code class="docutils literal notranslate"><span class="pre">docs/_build</span></code> folder before each run.</p>
+<p>After an update of the documentation, you will see that you also need to make a commit in the main repo, as the commit
+hash of the docs submodule has changed.</p>
+<p>To make sure you don’t forget to update the docs, the <code class="docutils literal notranslate"><span class="pre">poe</span> <span class="pre">prepare_release</span></code> task will also build and upload the docs
+automatically.</p>
+</section>
+</section>
+
+
+              </article>
+              
+
+              
+          </div>
+          
+      </div>
+    </div>
+
+  
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=92025949c220c2e29695"></script>
+
+<footer class="bd-footer"><div class="bd-footer__inner container">
+  
+  <div class="footer-item">
+    <p class="copyright">
+    &copy; Copyright 2022 - 2022, MaD Lab, FAU.<br>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
+</p>
+  </div>
+  
+</div>
+</footer>
+  </body>
+</html>
